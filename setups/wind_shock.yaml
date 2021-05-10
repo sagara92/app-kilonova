@@ -9,16 +9,16 @@ hydro:
 model:
   wind_shock:
     wind_mass_outflow_rate: 1e20 # this is ~1e-6 solar masses per year
-    flare_outflow_rate: 1e33
-    flare_gamma_beta: 1e2
-    wind_gamma_beta: 1e2
+    flare_outflow_rate: 1e20
+    flare_gamma_beta: 100
+    wind_gamma_beta: 10
     post_shock_gamma_beta: 1e-2
     wind_pressure: 1e-17
     post_shock_pressure: 1e-9
     shock_location: 1e10
     initial_data_table: data.dat
-    flare_time: 10.0 #start of the flare.
-    flare_duration: 0.01 #flare will taper off linearly from start time till start time + duration
+    flare_time: 1.0 #start of the flare.
+    flare_duration: 0.02 #flare will taper off linearly from start time till start time + duration
 
 mesh:
   inner_radius: 1e8
@@ -31,7 +31,7 @@ mesh:
   block_size: 32 # num zones in a block (parallelization unit)
 
 control:
-  final_time: 13.0
+  final_time: 10.0
   start_time: 0.0
   checkpoint_interval: 0.05
   fold: 10
