@@ -171,8 +171,8 @@ def plot_radial_profile(products, fig, ax1, args):
     ax1.plot(r, d, '-o', mfc='none')
     ax1.set_xscale('log')
     ax1.set_yscale('log')
-    ax1.set_xlim([1e8,4e10])
-    ax1.set_ylim([8e-14,2e-9])
+    #ax1.set_xlim([1e8,4e10])
+    #ax1.set_ylim([8e-14,2e-9])
     ax1.set_xlabel(r'$r \ \rm{[cm]}$')
 
     return fig

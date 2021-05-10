@@ -15,24 +15,25 @@ model:
     post_shock_gamma_beta: 1e-2
     wind_pressure: 1e-17
     post_shock_pressure: 1e-9
-    shock_location: 5e8
-    flare_time: 1.0 #start of the flare.
+    shock_location: 1e10
+    initial_data_table: data.dat
+    flare_time: 10.0 #start of the flare.
     flare_duration: 0.01 #flare will taper off linearly from start time till start time + duration
 
 mesh:
-  inner_radius: 5e8
-  outer_radius: 50e9
+  inner_radius: 1e8
+  outer_radius: 1e11
   inner_excision_speed: 0.0
   outer_excision_speed: 0.0
-  reference_radius: 2e8
+  reference_radius: 1e8
   num_polar_zones: 1
   num_radial_zones: 32 # per decade
   block_size: 32 # num zones in a block (parallelization unit)
 
 control:
-  final_time: 8.0
+  final_time: 13.0
   start_time: 0.0
   checkpoint_interval: 0.05
   fold: 10
-  num_threads: 4
+  num_threads: 5
   output_directory: data
