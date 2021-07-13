@@ -21,6 +21,7 @@ use crate::models::{
     JetInStar,
     WindShock,
     KineticBomb,
+    WindSelf,
 };
 use crate::physics::{
     AnyPrimitive,
@@ -73,6 +74,7 @@ pub enum AnyModel {
     JetInStar(JetInStar),
     WindShock(WindShock),
     KineticBomb(KineticBomb),
+    WindSelf(WindSelf),
 }
 
 
@@ -194,7 +196,7 @@ impl AnyHydro {
         match self {
             AnyHydro::Newtonian(hydro) => hydro.validate(),
             AnyHydro::Relativistic(hydro) => hydro.validate(),
-        }        
+        }
     }
 }
 
@@ -226,6 +228,7 @@ impl InitialModel for AnyModel {
             AnyModel::JetInStar(m)    => m.validate(),
             AnyModel::WindShock(m)    => m.validate(),
             AnyModel::KineticBomb(m) => m.validate(),
+            AnyModel::WindSelf(m)     => m.validate(),
         }
     }
 
@@ -236,7 +239,9 @@ impl InitialModel for AnyModel {
             AnyModel::JetInStar(m)    => m.primitive_at(coordinate, time),
             AnyModel::WindShock(m)    => m.primitive_at(coordinate, time),
             AnyModel::KineticBomb(m)  => m.primitive_at(coordinate, time),
-        } 
+            AnyModel::WindSelf(m)     => m.primitive_at(coordinate, time),
+
+        }
     }
 
     fn scalar_at(&self, coordinate: (f64, f64), time: f64) -> f64 {
@@ -246,6 +251,8 @@ impl InitialModel for AnyModel {
             AnyModel::JetInStar(m)    => m.scalar_at(coordinate, time),
             AnyModel::WindShock(m)    => m.scalar_at(coordinate, time),
             AnyModel::KineticBomb(m)  => m.scalar_at(coordinate, time),
+            AnyModel::WindSelf(m)     => m.scalar_at(coordinate, time),
+
         }
     }
 }
